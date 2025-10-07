@@ -42,3 +42,11 @@ body {
     border-color: #d9cbbf;
     margin-bottom: 5px;
 }
+.card-text img,
+.guide-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+}

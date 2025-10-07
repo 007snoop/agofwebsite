@@ -55,7 +55,7 @@ $guides = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <div>
                         <a href="view_guide.php?id=<?= $guide['id'] ?>" class="btn btn-sm btn-secondary">View</a>
-                        <?php if ($guide['status'] !== 'approved'): ?>
+                        <?php if ($guide['user_id'] == $userId): ?>
                             <a href="/../guides/edit.php?id=<?= $guide['id'] ?>" class="btn btn-sm btn-primary">Edit</a>
                         <?php endif; ?>
                     </div>

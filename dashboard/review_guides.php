@@ -85,7 +85,16 @@ $config->set("HTML.AllowedAttributes", [
 ]);
 
 // Allow all CSS properties Summernote may use
-$config->set("CSS.AllowedProperties", null);
+$config->set("CSS.AllowedProperties", [
+            'color',
+            'background-color',
+            'font-size',
+            'text-align',
+            'width',
+            'height',
+            'max-width',
+            'max-height'
+        ]);
 
 $config->set("URI.AllowedSchemes", [
     "http" => true,
