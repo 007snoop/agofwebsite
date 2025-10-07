@@ -37,6 +37,11 @@ $config->set("URI.AllowedSchemes", ["http" => true, "https" => true, "data" => t
 
 $purifier = new HTMLPurifier($config);
 $cleanContent = $purifier->purify($guide["content"]);
+
+$stmt = $pdo->prepare("SELECT g.title, g.content, g.user_id, u.username FROM guides g JOIN users u ON g.user_id = u.id WHERE g.id = ? AND g.status = 'approved'");
+$stmt->execute([$guideId]);
+
+$guide = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +69,13 @@ $cleanContent = $purifier->purify($guide["content"]);
             <?= $cleanContent ?>
         </div>
         <a href="guide-landing.php" class="btn btn-secondary mt-4">Back to Guides</a>
+        <?php 
+        $userId = checklogin();
+        $canEdit = $userId && ($userId == $guide['user_id'] || hasRole(['officer', 'committee']));
+        if ($canEdit) {
+            echo '<p><a class="btn btn-secondary mt-4" href="/guides/edit.php?id='.$guideId.'">Edit</a></p>';
+        }
+        ?>
     </div>
      <button id="back-to-top" class="btn btn-secondary">Back to Top</button>
 </main>

@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/index.php">A Group of Friends</a>
@@ -25,6 +27,15 @@
           <li class="nav-item"><a class="nav-link" href="/accounts/login.php">Login</a></li>
         <?php endif; ?>
       </ul>
+
+      <?php if ($userId):
+        global $user;
+      ?>
+      <span class="navbar-text ms-auto">
+        Logged in as: <?= htmlspecialchars($user["username"]) ?>
+      </span>
+      <?php endif; ?>
+      
     </div>
   </div>
 </nav>

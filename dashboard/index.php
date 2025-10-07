@@ -49,6 +49,10 @@ if (!in_array($user['role'], ['officer', 'committee', 'member'])) {
                     <a href="review_guides.php" class="list-group-item list-group-item-action">Review Guides</a>
                 <?php endif; ?>
 
+
+                <a class="list-group-item list-group-item-action" href="/dashboard/my_guides.php">My Guides</a>
+                
+
                 <?php if (hasRole('committee')): ?>
                     <a href="user_management.php" class="list-group-item list-group-item-action">User Management</a>
                 <?php endif; ?>
